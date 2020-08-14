@@ -7,39 +7,74 @@ namespace Stripe
 
     public class PaymentMethod : StripeEntity<PaymentMethod>, IHasId, IHasMetadata, IHasObject
     {
+        /// <summary>
+        /// Unique identifier for the object.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
 
+        /// <summary>
+        /// String representing the object's type. Objects of the same type share the same value.
+        /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("alipay")]
         public PaymentMethodAlipay Alipay { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("au_becs_debit")]
         public PaymentMethodAuBecsDebit AuBecsDebit { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("bacs_debit")]
         public PaymentMethodBacsDebit BacsDebit { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("bancontact")]
         public PaymentMethodBancontact Bancontact { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("billing_details")]
         public PaymentMethodBillingDetails BillingDetails { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("card")]
         public PaymentMethodCard Card { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("card_present")]
         public PaymentMethodCardPresent CardPresent { get; set; }
 
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable Customer
 
+        /// <summary>
+        /// (ID of the Customer)
+        /// The ID of the Customer to which this PaymentMethod is saved. This will not be set when
+        /// the PaymentMethod has not been saved to a Customer.
+        /// </summary>
         [JsonIgnore]
         public string CustomerId
         {
@@ -47,6 +82,13 @@ namespace Stripe
             set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the Customer to which this PaymentMethod is saved. This will not be set when
+        /// the PaymentMethod has not been saved to a Customer.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
         public Customer Customer
         {
@@ -59,33 +101,81 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("eps")]
         public PaymentMethodEps Eps { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("fpx")]
         public PaymentMethodFpx Fpx { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("giropay")]
         public PaymentMethodGiropay Giropay { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("ideal")]
         public PaymentMethodIdeal Ideal { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("interac_present")]
         public PaymentMethodInteracPresent InteracPresent { get; set; }
 
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
+        /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("p24")]
         public PaymentMethodP24 P24 { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
 
+        /// <summary>
+        /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
+        /// a name matching this value. It contains additional information specific to the
+        /// PaymentMethod type.
+        /// Possible values:
+        ///  <c>alipay</c>
+        ///  <c>au_becs_debit</c>
+        ///  <c>bacs_debit</c>
+        ///  <c>bancontact</c>
+        ///  <c>card</c>
+        ///  <c>card_present</c>
+        ///  <c>eps</c>
+        ///  <c>fpx</c>
+        ///  <c>giropay</c>
+        ///  <c>ideal</c>
+        ///  <c>p24</c>
+        ///  <c>sepa_debit</c>
+        /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
     }

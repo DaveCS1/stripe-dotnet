@@ -4,12 +4,22 @@ namespace Stripe
 
     public class PaymentIntentNextAction : StripeEntity<PaymentIntentNextAction>
     {
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("alipay_handle_redirect")]
         public PaymentIntentNextActionAlipayHandleRedirect AlipayHandleRedirect { get; set; }
 
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("redirect_to_url")]
         public PaymentIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 
+        /// <summary>
+        /// Type of the next action to perform, one of <c>redirect_to_url</c> or
+        /// <c>use_stripe_sdk</c>.
+        /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
     }

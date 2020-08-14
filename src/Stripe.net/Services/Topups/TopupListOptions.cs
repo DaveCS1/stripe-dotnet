@@ -4,6 +4,9 @@ namespace Stripe
 
     public class TopupListOptions : ListOptionsWithCreated
     {
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
     }

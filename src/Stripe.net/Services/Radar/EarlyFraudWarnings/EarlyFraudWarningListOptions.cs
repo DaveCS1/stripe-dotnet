@@ -4,6 +4,9 @@ namespace Stripe.Radar
 
     public class EarlyFraudWarningListOptions : ListOptions
     {
+        /// <summary>
+        /// TODO: Field description missing from spec.
+        /// </summary>
         [JsonProperty("charge")]
         public string Charge { get; set; }
     }
